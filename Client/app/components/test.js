@@ -28,3 +28,5 @@ var q = policy("QHP34567"); /*?*/
 
 var obj1 = { a: 123, b: 456 };
 var obj2 = { a: 876, b: 917 };
+
+obj1, obj2
