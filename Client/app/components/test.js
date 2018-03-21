@@ -1,33 +1,30 @@
-const printable = (state) => ({
-    print: () => console.log(state.policyNbr + " is being printed")
-  })
-  
-  const bindable = (state) => ({
-    bind: () => console.log(state.policyNbr + " was bound")
-  }) 
+const printable = state => ({
+  print: () => console.log(state.policyNbr + " is being printed")
+});
 
-  const policy = (polNbr) => {
-  
-    let state = {
-      policyNbr: polNbr,
-      isIssued: false,
-      createDate: Date.now()
-    }
-    
-    return Object.assign(
-        {},
-        printable(state),
-        bindable(state));
-   
-    
-  }
-  
-  var p = policy('LHP8855')
-  p.print()
-  p.bind()
+const bindable = state => ({
+  bind: () => console.log(state.policyNbr + " was bound")
+});
 
-  var q = policy('QHP34567');
+const policy = polNbr => {
+  let state = {
+    policyNbr: polNbr,
+    isIssued: false,
+    createDate: Date.now()
+  };
 
-  var obj1 = { a: 123, b:456}
-  var obj2 = { a: 876, b:917}
+  return Object.assign({}, printable(state), bindable(state));
+};
 
+var p = policy("LHP8855");
+p.print(); /*?*/
+p.bind(); /*?*/
+
+for (let i = 0; i < 100; i++) {
+  p.print(); /*?.*/
+}
+
+var q = policy("QHP34567"); /*?*/
+
+var obj1 = { a: 123, b: 456 };
+var obj2 = { a: 876, b: 917 };
