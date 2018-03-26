@@ -20,6 +20,16 @@ function Nav() {
                     Popular
                 </NavLink>
             </li>
+            <li>
+                <NavLink activeClassName='active' to='/grid'>
+                    Grid
+                </NavLink>
+            </li>
+            <li>
+                <NavLink activeClassName='active' to='/sortgrid'>
+                    Grid2
+                </NavLink>
+            </li>
         </ul>
     );    
 }

@@ -16,17 +16,7 @@ const policy = polNbr => {
   return Object.assign({}, printable(state), bindable(state));
 };
 
-var p = policy("LHP8855");
-p.print(); /*?*/
-p.bind(); /*?*/
+var p = policy("LHP8955");
+p.print(); 
+p.bind(); 
 
-for (let i = 0; i < 100; i++) {
-  p.print(); /*?.*/
-}
-
-var q = policy("QHP34567"); /*?*/
-
-var obj1 = { a: 123, b: 456 };
-var obj2 = { a: 876, b: 917 };
-
-obj1, obj2
