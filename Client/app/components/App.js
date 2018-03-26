@@ -9,8 +9,8 @@ import Nav from './Nav';
 import Home from './Home';
 import Battle from './Battle';
 import Results from './Results';
-import DxGrid from './DxGrid';
-import DxGrid2 from './DxGrid2';
+import DemoGrid from './DemoGrid';
+
 
 
 class App extends React.Component {
@@ -25,8 +25,8 @@ class App extends React.Component {
                         <Route exact path='/battle' component={Battle} />
                         <Route path='/battle/results' component={Results} />
                         <Route path='/popular' component={Popular} />
-                        <Route exact path='/sortgrid' component={DxGrid2} />
-                        <Route exact path='/grid' component={DxGrid} />
+                       
+                        <Route exact path='/grid' component={DemoGrid} />
                         
                         <Route render={function() { 
                            return <p>Not Found</p>    

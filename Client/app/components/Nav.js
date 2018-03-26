@@ -21,15 +21,11 @@ function Nav() {
                 </NavLink>
             </li>
             <li>
-                <NavLink activeClassName='active' to='/grid'>
+                <NavLink exact activeClassName='active' to='/grid'>
                     Grid
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClassName='active' to='/sortgrid'>
-                    Grid2
-                </NavLink>
-            </li>
+        
         </ul>
     );    
 }
