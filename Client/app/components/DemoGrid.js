@@ -3,7 +3,8 @@ import React from 'react';
 import { Grid, GridColumn as Column, GridCellProps, GridCell, GridToolbar, GridDetailRow } from '@progress/kendo-react-grid';
 
 import { filterBy } from '@progress/kendo-data-query';
-import { sampleProducts } from './sample-products.js';
+//import { sampleProducts } from './sample-products.js';
+import members from '../members.json';
 
 class CustomCell extends GridCell {
     render() {
@@ -18,13 +19,10 @@ class CustomCell extends GridCell {
 class DemoGrid extends React.Component {
     constructor(props) {
         super(props);
-        var initialFilter = {
-            logic: "and",
-            filters: [{ field: "ProductName", operator: "contains", value: "Chef" }]
-        };
+       
         this.state = {
-            data: this.GetProducts(initialFilter),
-            filter: initialFilter
+            data: this.GetProducts(null),
+            filter: null
         };
         this.filterChange = this.filterChange.bind(this);
     }
@@ -37,8 +35,11 @@ class DemoGrid extends React.Component {
     }
 
     GetProducts(filter) {
-        var data = sampleProducts.slice();
-        return filterBy(data, filter);
+        var data = members.slice();
+        if (filter)
+            return filterBy(data, filter);
+        else
+            return data;
     }
 
     render() {
@@ -49,13 +50,11 @@ class DemoGrid extends React.Component {
                     filterable={true}
                     filter={this.state.filter}
                     filterChange={this.filterChange}
-                    style={{ maxHeight: '420px' }}
+                    style={{ maxHeight: '720px', minHeight: '400px' }}
                 >
-                    <Column field="ProductID" title="ID" filterable={false} width="40px" />
-                    <Column field="ProductName" title="Product Name" />
-                    <Column field="FirstOrderedOn" title="First Ordered On" width="240px" filter="date" format="{0:d}" />
-                    <Column field="UnitPrice" title="Unit Price" width="180px" filter="numeric" format="{0:c}" />
-                    <Column field="Discontinued" title="Discontinued" width="130px" filter='boolean' cell={CustomCell} />
+                    <Column field="MemberFirstName" title="First Name"  />
+                    <Column field="MemberLastName" title="Last Name"  />
+                    <Column field="StreetAddress" title="Address" />
                 </Grid>
             </div>
         );

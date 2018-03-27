@@ -12,9 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@devexpress/dx-react-core": "^1.1.1",
-    "@devexpress/dx-react-grid": "^1.1.1",
-    "@devexpress/dx-react-grid-bootstrap4": "^1.1.1",
     "@progress/kendo-data-query": "^1.2.2",
     "@progress/kendo-react-dateinputs": "^0.4.0",
     "@progress/kendo-react-dropdowns": "^0.4.0",
