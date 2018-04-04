@@ -38,7 +38,6 @@ class Loading extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log('CLEAR THE INTERVAL');
         window.clearInterval(this.interval);
     }
 

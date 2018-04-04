@@ -20,14 +20,14 @@ var config = {
           { test: /\.(ttf|eot|otf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
         ]
     },
-    devServer: {
-        historyApiFallback: true
-    },
     plugins: [
         new HtmlWebpackPlugin({
           template: 'app/index.html'
         })
-    ]   
+    ],
+    devServer: {
+        historyApiFallback: true
+    }   
 };
 
 if (process.env.NODE_ENV === 'production') {

@@ -11,13 +11,8 @@ function Nav() {
                 </NavLink>
             </li>
             <li>
-                <NavLink activeClassName='active' to='/battle'>
-                    Battle
-                </NavLink>
-            </li>
-            <li>
-                <NavLink activeClassName='active' to='/popular'>
-                    Popular
+                <NavLink activeClassName='active' to='/members'>
+                    Members
                 </NavLink>
             </li>
             <li>

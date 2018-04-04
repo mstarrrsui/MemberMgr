@@ -11,7 +11,7 @@ import {
 
 import { filterBy } from "@progress/kendo-data-query";
 //import { sampleProducts } from './sample-products.js';
-import members from "../members.json";
+import members from "../data/members.json";
 
 class CustomCell extends GridCell {
   render() {

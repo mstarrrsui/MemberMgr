@@ -3,6 +3,7 @@ import React from 'react';
 var PropTypes = require('prop-types');
 var api = require('../utils/api');
 var Loading = require('./Loading');
+import log from 'loglevel';
 
 function SelectLanguage(props) {
     var languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
@@ -74,6 +75,7 @@ class Popular extends React.Component {
     }
 
     componentDidMount() {
+
         this.updateLanguage(this.state.selectedLanguage);
     }
 
