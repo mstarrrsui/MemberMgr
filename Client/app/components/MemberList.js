@@ -4,7 +4,7 @@ import MemberListRow from './MemberListRow';
 
 const MemberList = ({members}) => {
   return (
-    <table className="table">
+    <table className="table member-list">
       <thead>
       <tr>
         <th>&nbsp;</th>

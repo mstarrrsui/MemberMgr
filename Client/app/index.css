@@ -94,6 +94,9 @@ body {
     justify-content: space-between;
     align-content: center;
   }
+  .member-list {
+    margin-top: 10px; 
+  }
 
   .popular-item {
     margin: 20px;
