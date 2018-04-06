@@ -10,6 +10,9 @@ const MemberListRow = ({member}) => {
         <td>{member.MemberLastName}</td>
         <td>{member.MemberEmailAddress}</td>
         <td>{member.StreetAddress}</td>
+        <td>{member.City}</td>
+        <td>{member.State}</td>
+        <td>{member.Zipcode}</td>
       </tr>
   );
 };
