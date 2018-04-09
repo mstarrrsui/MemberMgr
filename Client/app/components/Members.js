@@ -46,9 +46,11 @@ class Members extends React.Component {
 
           {!this.state.members && !this.state.inAddMode ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
 
-          <Modal open={inAddMode} onClose={this.onCloseModal} little 
+          <Modal open={inAddMode} 
+                 onClose={this.onCloseModal} 
+                 little 
                  classNames={{ modal: 'custom-modal' }}>
-            <h2>Simple centered modal</h2>
+            <h2>Add New Member</h2>
             <div>
           <form>
             <div className="form-row">
