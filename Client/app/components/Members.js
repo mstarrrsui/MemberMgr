@@ -39,12 +39,9 @@ class Members extends React.Component {
       return <div>
           <h1>Members</h1>
 
-          
-          
+          <input type="submit" value="Add Member" className="btn btn-primary" onClick={this.onAddClicked} />
 
-          {!this.state.inAddMode ? <input type="submit" value="Add Member" className="btn btn-primary" onClick={this.onAddClicked} /> : null}
-
-          {!this.state.members && !this.state.inAddMode ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
+          {!this.state.members  ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
 
           <Modal open={inAddMode} 
                  onClose={this.onCloseModal} 
