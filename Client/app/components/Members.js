@@ -22,55 +22,49 @@ class Members extends React.Component {
 
     onAddClicked = () => {
       this.setState({ inAddMode: true });
-    };
+    }
 
     onCloseModal = () => {
       this.setState({ inAddMode: false });
-    };
+    }
 
     loadMembers() {
       MemberApi.getAllMembers()
-            .then(members => {
-                this.setState(function () {
-                    return {
-                        members: members
-                    }
-                });
-            })
-            .catch(error => {
-              throw(error)
-            });
+               .then( (members) => this.setState( () => ({ members: members}) ))
+               .catch( error => { throw(error); })
     }
 
     render() {
-      const { inAddMode:open } = this.state;
-      return (
-        <div>
+      const { inAddMode } = this.state;
+      return <div>
           <h1>Members</h1>
-        
-          { !this.state.inAddMode 
-            ? <input type="submit"
-                value="Add Member"
-                className="btn btn-primary"
-                onClick={this.onAddClicked}/>
-            : null }
-          
-  
-            { !this.state.members && !this.state.inAddMode
-            ? <Loading speed={90} text='DOWNLOADING'/>
-            : <MemberList members={this.state.members}/> }
 
-            <Modal open={open} onClose={this.onCloseModal} little>
-              <h2>Simple centered modal</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-                hendrerit risus, sed porttitor quam.
-              </p>
-            </Modal>
           
+          
+
+          {!this.state.inAddMode ? <input type="submit" value="Add Member" className="btn btn-primary" onClick={this.onAddClicked} /> : null}
+
+          {!this.state.members && !this.state.inAddMode ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
+
+          <Modal open={inAddMode} onClose={this.onCloseModal} little 
+                 classNames={{ modal: 'custom-modal' }}>
+            <h2>Simple centered modal</h2>
+            <div>
+          <form>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="firstName">First Name</label>
+                <input type="text" className="form-control" id="firstName" placeholder="First Name" />
+              </div>
+              <div className="form-group col-md-6">
+                <label htmlFor="lastName">Last Name</label>
+                <input type="text" className="form-control" id="lastName" placeholder="Last Name" />
+              </div>
+            </div>
+          </form>
         </div>
-      );
+          </Modal>
+        </div>;
     }
   }
   
