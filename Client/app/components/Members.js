@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import MemberList from './MemberList';
+import MemberForm from './MemberForm';
 import MemberApi from '../api/mockMemberApi'
 import log from 'loglevel';
 import Modal from 'react-responsive-modal';
+
+import { US_STATES } from '../data/states'
 
 
 class Members extends React.Component {
@@ -17,6 +20,7 @@ class Members extends React.Component {
     }
   
     componentDidMount() {
+      log.info(US_STATES[6]);
       this.loadMembers();
     }
 
@@ -39,6 +43,9 @@ class Members extends React.Component {
       return <div>
           <h1>Members</h1>
 
+          <MemberForm/>
+
+
           <input type="submit" value="Add Member" className="btn btn-primary" onClick={this.onAddClicked} />
 
           {!this.state.members  ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
@@ -48,20 +55,7 @@ class Members extends React.Component {
                  little 
                  classNames={{ modal: 'custom-modal' }}>
             <h2>Add New Member</h2>
-            <div>
-          <form>
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <label htmlFor="firstName">First Name</label>
-                <input type="text" className="form-control" id="firstName" placeholder="First Name" />
-              </div>
-              <div className="form-group col-md-6">
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" className="form-control" id="lastName" placeholder="Last Name" />
-              </div>
-            </div>
-          </form>
-        </div>
+
           </Modal>
         </div>;
     }
