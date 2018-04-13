@@ -8,6 +8,7 @@ const MemberList = ({members}) => {
         <thead>
         <tr>
           <th>&nbsp;</th>
+          <th>Id</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>

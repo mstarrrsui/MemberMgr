@@ -6,6 +6,7 @@ const MemberListRow = ({member}) => {
   return (
       <tr>
         <td>&nbsp;</td>
+        <td>{member.id}</td>
         <td>{member.MemberFirstName}</td>  
         <td>{member.MemberLastName}</td>
         <td>{member.MemberEmailAddress}</td>
