@@ -25,7 +25,38 @@ class Members extends React.Component {
     }
 
     onAddClicked = () => {
-      this.setState({ inAddMode: true });
+      //TODO - update list
+      //       save to DB (MOCKED)
+      //        reload from the DB
+
+
+
+      //this.setState({ inAddMode: true });
+      MemberApi.addMember({
+        "SpouseEmailAddress":  "",
+        "Child6First":  "",
+        "MemberCellPhone":  "",
+        "SpouseFirstName":  "",
+        "MemberEmailAddress":  "",
+        "Child1First":  "",
+        "MemberLastName":  "Dandy",
+        "HouseholdFullName":  "",
+        "HomePhone":  "",
+        "Child2First":  "",
+        "StreetAddress":  "123 Maple Street",
+        "DateJoined":  "8/8/2017",
+        "Child3First":  "",
+        "State":  "GA",
+        "MemberFirstName":  "Jim",
+        "SpouseCellPhone":  "",
+        "Child5First":  "",
+        "City":  "Decatur",
+        "Zipcode":  "30033",
+        "MemberStatus":  "M",
+        "Child4First":  "",
+        "SpouseLastName":  ""
+    }).then(this.loadMembers());
+
     }
 
     onCloseModal = () => {
@@ -43,10 +74,10 @@ class Members extends React.Component {
       return <div>
           <h1>Members</h1>
 
-          <MemberForm/>
+          <MemberForm onSubmit={this.onAddClicked}/>
 
 
-          <input type="submit" value="Add Member" className="btn btn-primary" onClick={this.onAddClicked} />
+          <input type="submit" value="Open Dialog" className="btn btn-primary" onClick={this.onAddClicked} />
 
           {!this.state.members  ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
 

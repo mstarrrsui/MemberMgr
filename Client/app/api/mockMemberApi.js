@@ -1,12 +1,32 @@
 import delay from './delay';
 import members from '../data/members.json'
+//import SampleMembers from '../data/samplemembers'
 
-class MemberApi {
-  static getAllMembers() {
+
+
+const MemberApi = {
+
+  memberData: [],
+
+  getAllMembers: function() {
+
+    if (this.memberData.length < 1) 
+      this.memberData = [...members.map( (m, idx) => ({ id: idx, ...m}) )];
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        let memberswithids = members.map( (m, idx) => ({ id: idx, ...m}) )
-        resolve(Object.assign([], memberswithids));
+        resolve(Object.assign([], this.memberData));
+      }, delay);
+    });
+  },
+
+  addMember: function(newmember) {
+    
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let newmemberwithid = ({id: this.memberData.length, ...newmember});
+        this.memberData.push(newmemberwithid);
+        resolve(Object.assign({}, newmemberwithid));
       }, delay);
     });
   }

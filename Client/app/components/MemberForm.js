@@ -4,10 +4,16 @@ import Select from 'react-select';
 
 import { US_STATES } from '../data/states'
 
-const MemberForm = () => {
+const MemberForm = ({onSubmit}) => {
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      onSubmit();
+    }
+
     return (
       <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="inputFirstName">First Name</label>
@@ -40,6 +46,12 @@ const MemberForm = () => {
                 <label htmlFor="inputZip">Zip</label>
                 <input type="text" className="form-control" id="inputZip"/>
               </div>
+              
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <button type="submit" className="btn btn-primary float-right">Add</button>
+              </div>
             </div>
           </form>
         </div>
@@ -47,6 +59,7 @@ const MemberForm = () => {
 };
 
 MemberForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default MemberForm;
