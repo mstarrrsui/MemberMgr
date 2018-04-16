@@ -10,21 +10,18 @@ import {
 } from "@progress/kendo-react-grid";
 
 import { filterBy } from "@progress/kendo-data-query";
-//import { sampleProducts } from './sample-products.js';
 import members from "../data/members.json";
 
-class CustomCell extends GridCell {
-  render() {
-    return (
-      <td>
-        <input
-          disabled
-          type="checkbox"
-          checked={this.props.dataItem[this.props.field]}
-        />
-      </td>
-    );
-  }
+const CustomCell = ({dataItem, field}) => {
+  (
+    <td>
+      <input
+        disabled
+        type="checkbox"
+        checked={dataItem[field]}
+      />
+    </td>
+  );
 }
 
 class DemoGrid extends React.Component {
@@ -39,31 +36,33 @@ class DemoGrid extends React.Component {
   }
 
   filterChange(event) {
-    this.setState({
-      data: this.GetProducts(event.filter),
-      filter: event.filter
-    });
+    const filter = event.filter;
+    this.setState(() => ({
+      data: this.GetProducts(filter),
+      filter
+    }));
   }
 
   GetProducts(filter) {
     var data = members.slice();
-    if (filter) return filterBy(data, filter);
-    else return data;
+    return filter ? filterBy(data, filter) : data;
   }
 
   render() {
+
+    const { data, filter } = this.state;
+
     return (
       <div>
         <Grid
-          data={this.state.data}
+          data={data}
           filterable={true}
-          filter={this.state.filter}
+          filter={filter}
           filterChange={this.filterChange}
-          style={{ maxHeight: "720px", minHeight: "400px" }}
-        >
-          <Column field="MemberFirstName" title="First Name" />
-          <Column field="MemberLastName" title="Last Name" />
-          <Column field="StreetAddress" title="Address" />
+          style={{ maxHeight: "720px", minHeight: "400px" }}>
+            <Column field="MemberFirstName" title="First Name" />
+            <Column field="MemberLastName" title="Last Name" />
+            <Column field="StreetAddress" title="Address" />
         </Grid>
       </div>
     );
