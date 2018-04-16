@@ -33,29 +33,15 @@ class Members extends React.Component {
 
       //this.setState({ inAddMode: true });
       MemberApi.addMember({
-        "SpouseEmailAddress":  "",
-        "Child6First":  "",
-        "MemberCellPhone":  "",
-        "SpouseFirstName":  "",
-        "MemberEmailAddress":  "",
-        "Child1First":  "",
-        "MemberLastName":  "Dandy",
-        "HouseholdFullName":  "",
-        "HomePhone":  "",
-        "Child2First":  "",
-        "StreetAddress":  "123 Maple Street",
-        "DateJoined":  "8/8/2017",
-        "Child3First":  "",
-        "State":  "GA",
         "MemberFirstName":  "Jim",
-        "SpouseCellPhone":  "",
-        "Child5First":  "",
+        "MemberLastName":  "Dandy",
+        "StreetAddress":  "123 Maple Street",
+        "State":  "GA",
         "City":  "Decatur",
         "Zipcode":  "30033",
         "MemberStatus":  "M",
-        "Child4First":  "",
-        "SpouseLastName":  ""
-    }).then(this.loadMembers());
+        "DateJoined":  "8/8/2017"
+      }).then(this.loadMembers());
 
     }
 

@@ -13,6 +13,7 @@ const MemberForm = ({onSubmit}) => {
 
     return (
       <div>
+      <div className="col-md-6">
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-6">
@@ -54,6 +55,10 @@ const MemberForm = ({onSubmit}) => {
               </div>
             </div>
           </form>
+        </div>
+        <div className="col-md-6">
+           
+        </div>
         </div>
     );
 };
