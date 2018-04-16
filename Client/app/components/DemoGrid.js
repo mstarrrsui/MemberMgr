@@ -55,10 +55,10 @@ class DemoGrid extends React.Component {
     return (
       <div>
         <Grid
-          data={data}
-          filterable={true}
-          filter={filter}
-          filterChange={this.filterChange}
+          data={ data }
+          filterable={ true }
+          filter={ filter }
+          filterChange={ this.filterChange }
           style={{ maxHeight: "720px", minHeight: "400px" }}>
             <Column field="MemberFirstName" title="First Name" />
             <Column field="MemberLastName" title="Last Name" />

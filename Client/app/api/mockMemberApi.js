@@ -1,6 +1,5 @@
 import delay from './delay';
 import members from '../data/members.json'
-//import SampleMembers from '../data/samplemembers'
 
 
 
@@ -11,7 +10,7 @@ const MemberApi = {
   getAllMembers: function() {
 
     if (this.memberData.length < 1) 
-      this.memberData = [...members.map( (m, idx) => ({ id: idx, ...m}) )];
+      this.memberData = members.map( (m, idx) => ({ id: idx, ...m}) );
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
