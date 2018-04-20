@@ -115,7 +115,7 @@ foreach ($rowNumber in 2..$rowsToIterate+1) {
     if ($rowNumber -gt 1) {
         $result = @{}
         foreach ($columnNumber in $Headers.GetEnumerator()) {
-            $ColumnName = $columnNumber.Value
+            $ColumnName = $columnNumber.Text
             $CellValue = $theSheet.Cells.Item($rowNumber, $columnNumber.Name).Text
             $result.Add($ColumnName,$cellValue)
         }
