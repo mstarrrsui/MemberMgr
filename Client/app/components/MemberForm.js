@@ -11,6 +11,7 @@ const MemberForm = ({onSubmit}) => {
       onSubmit();
     }
 
+    
     return (
       <div>
           <form onSubmit={handleSubmit}>
@@ -44,13 +45,13 @@ const MemberForm = ({onSubmit}) => {
               </div>
               <div className="form-group col-md-2">
                 <label htmlFor="inputZip">Zip</label>
-                <input type="text" className="form-control" id="inputZip"/>
+                <input type="text" className="form-control purple" id="inputZip"/>
               </div>
               
             </div>
             <div className="row">
               <div className="col-md-12">
-                <button type="submit" className="btn btn-primary float-right">Add</button>
+                <button type="submit" className="btn btn-primary float-right purple">Add</button>
               </div>
             </div>
           </form>

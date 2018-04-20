@@ -10,7 +10,7 @@ import {
 } from "@progress/kendo-react-grid";
 
 import { filterBy } from "@progress/kendo-data-query";
-import members from "../data/members.json";
+import members from "../data/property_forms.json";
 
 const CustomCell = ({dataItem, field}) => {
   (
@@ -24,6 +24,14 @@ const CustomCell = ({dataItem, field}) => {
   );
 }
 
+const isNull = function(data) {
+  if(data == null || data === 'NULL'){
+      return true;
+  }else{
+      return false;
+  }
+}
+
 class DemoGrid extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +41,7 @@ class DemoGrid extends React.Component {
       filter: null
     };
     this.filterChange = this.filterChange.bind(this);
+    this.selectionChange = this.selectionChange.bind(this);
   }
 
   filterChange(event) {
@@ -43,8 +52,19 @@ class DemoGrid extends React.Component {
     }));
   }
 
+  selectionChange(event) {
+    event.dataItem.selected = !event.dataItem.selected;
+    this.forceUpdate();
+  }
+
+  createFullDocNumber(doc) {
+    const num = isNull(doc.DocNumber) ? '' : doc.DocNumber;
+    const edition = isNull(doc.Edition) ? '' : doc.Edition;
+    return num + ' ' + edition;
+  }
+
   GetProducts(filter) {
-    var data = members.slice();
+    const data = members.slice(0, 20).map( d => ({ NumberPlus: this.createFullDocNumber(d),selected: false, ...d}));
     return filter ? filterBy(data, filter) : data;
   }
 
@@ -59,10 +79,12 @@ class DemoGrid extends React.Component {
           filterable={ true }
           filter={ filter }
           filterChange={ this.filterChange }
+          selectedField="selected"
+          selectionChange={ this.selectionChange }
           style={{ maxHeight: "720px", minHeight: "400px" }}>
-            <Column field="MemberFirstName" title="First Name" />
-            <Column field="MemberLastName" title="Last Name" />
-            <Column field="StreetAddress" title="Address" />
+            <Column field="selected" width="50px" />
+            <Column field="NumberPlus" title="Doc Number" />
+            <Column field="Name" title="Doc Name" />
         </Grid>
       </div>
     );
