@@ -64,7 +64,7 @@ class DemoGrid extends React.Component {
   }
 
   GetProducts(filter) {
-    const data = members.slice(0, 20).map( d => ({ NumberPlus: this.createFullDocNumber(d),selected: false, ...d}));
+    const data = members.slice(0, 500).map( d => ({ NumberPlus: this.createFullDocNumber(d),selected: false, ...d}));
     return filter ? filterBy(data, filter) : data;
   }
 
