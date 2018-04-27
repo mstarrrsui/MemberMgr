@@ -22,7 +22,7 @@ class Members extends React.Component {
       this.loadMembers();
     }
 
-    onAddClicked = ({firstName, lastName}) => {
+    onAddClicked = ({firstName, lastName, address1, city, addrState, zipcode}) => {
       //TODO - update list
       //       save to DB (MOCKED)
       //        reload from the DB
@@ -33,10 +33,10 @@ class Members extends React.Component {
       MemberApi.addMember({
         "MemberFirstName":  firstName,
         "MemberLastName":  lastName,
-        "StreetAddress":  "123 Maple Street",
-        "State":  "GA",
-        "City":  "Decatur",
-        "Zipcode":  "30033",
+        "StreetAddress":  address1,
+        "State":  addrState,
+        "City":  city,
+        "Zipcode":  zipcode,
         "MemberStatus":  "M",
         "DateJoined":  "8/8/2017"
       }).then(this.loadMembers());

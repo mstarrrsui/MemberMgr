@@ -16,7 +16,8 @@ class MemberForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    const formData = { ...this.state };
+    this.props.onSubmit(formData);
   }
 
   handleInputChange(e) {
