@@ -5,7 +5,6 @@ import MemberList from './MemberList';
 import MemberForm from './MemberForm';
 import MemberApi from '../api/mockMemberApi'
 import log from 'loglevel';
-import Modal from 'react-responsive-modal';
 
 import { US_STATES } from '../data/states'
 
@@ -14,8 +13,7 @@ class Members extends React.Component {
     constructor(props, context) {
       super(props, context);
       this.state = {
-        members: null,
-        inAddMode: false
+        members: null
       }
     }
   
@@ -24,7 +22,7 @@ class Members extends React.Component {
       this.loadMembers();
     }
 
-    onAddClicked = () => {
+    onAddClicked = ({firstName, lastName}) => {
       //TODO - update list
       //       save to DB (MOCKED)
       //        reload from the DB
@@ -33,8 +31,8 @@ class Members extends React.Component {
 
       //this.setState({ inAddMode: true });
       MemberApi.addMember({
-        "MemberFirstName":  "Jim",
-        "MemberLastName":  "Dandy",
+        "MemberFirstName":  firstName,
+        "MemberLastName":  lastName,
         "StreetAddress":  "123 Maple Street",
         "State":  "GA",
         "City":  "Decatur",
@@ -45,9 +43,6 @@ class Members extends React.Component {
 
     }
 
-    onCloseModal = () => {
-      this.setState({ inAddMode: false });
-    }
 
     loadMembers() {
       MemberApi.getAllMembers()
@@ -56,24 +51,14 @@ class Members extends React.Component {
     }
 
     render() {
-      const { inAddMode } = this.state;
       return <div>
           <h1>Members</h1>
-
           <MemberForm onSubmit={this.onAddClicked}/>
-
-
-          <input type="submit" value="Open Dialog" className="btn btn-primary" onClick={this.onAddClicked} />
-
-          {!this.state.members  ? <Loading speed={90} text="DOWNLOADING" /> : <MemberList members={this.state.members} />}
-
-          <Modal open={inAddMode} 
-                 onClose={this.onCloseModal} 
-                 little 
-                 classNames={{ modal: 'custom-modal' }}>
-            <h2>Add New Member</h2>
-
-          </Modal>
+          {!this.state.members  
+            ? <Loading speed={90} text="DOWNLOADING" /> 
+            : <MemberList members={this.state.members} 
+          />}
+         
         </div>;
     }
   }
