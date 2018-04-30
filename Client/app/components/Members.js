@@ -5,6 +5,7 @@ import MemberList from './MemberList';
 import MemberForm from './MemberForm';
 import MemberApi from '../api/mockMemberApi'
 import log from 'loglevel';
+import Modal from 'react-responsive-modal';
 
 import { US_STATES } from '../data/states'
 
@@ -13,7 +14,8 @@ class Members extends React.Component {
     constructor(props, context) {
       super(props, context);
       this.state = {
-        members: null
+        members: null,
+        isAddDialogOpen: false
       }
     }
   
@@ -22,7 +24,15 @@ class Members extends React.Component {
       this.loadMembers();
     }
 
-    onAddClicked = ({firstName, lastName, address1, city, addrState, zipcode}) => {
+    onAddNew = () => {
+      this.setState( () => ({ isAddDialogOpen: true}) )  
+    }
+
+    onCloseModal = () => {
+      this.setState( () => ({ isAddDialogOpen: false}) )  
+    }
+
+    onSubmit = ({firstName, lastName, address1, city, addrState, zipcode}) => {
       //TODO - update list
       //       save to DB (MOCKED)
       //        reload from the DB
@@ -39,25 +49,42 @@ class Members extends React.Component {
         "Zipcode":  zipcode,
         "MemberStatus":  "M",
         "DateJoined":  "8/8/2017"
-      }).then(this.loadMembers());
+      }).then(this.loadMembers())
+        .then(this.setState( () => ({ isAddDialogOpen: false}) ));
 
     }
 
 
     loadMembers() {
       MemberApi.getAllMembers()
-               .then( (members) => this.setState( () => ({ members: members}) ))
+               .then( (members) => this.setState( () => ({ members: members }) ))
                .catch( error => { throw(error); })
     }
 
     render() {
+
+      const {members, isAddDialogOpen} = this.state;
+
       return <div>
           <h1>Members</h1>
-          <MemberForm onSubmit={this.onAddClicked}/>
-          {!this.state.members  
+          <div className="row">
+             <div className="col-md-12">
+                  <button type="submit" onClick={this.onAddNew} className="btn btn-primary float-right">Add New</button>
+                </div>
+          </div>
+          {!members  
             ? <Loading speed={90} text="DOWNLOADING" /> 
-            : <MemberList members={this.state.members} 
+            : <MemberList members={members} 
           />}
+
+          <Modal open={isAddDialogOpen} 
+                 onClose={this.onCloseModal} 
+                 closeOnOverlayClick={false}
+                 little 
+                 classNames={{ modal: 'custom-modal' }}>
+            <h2>Add New Member</h2>
+            <MemberForm onSubmit={this.onSubmit}/>
+          </Modal>
          
         </div>;
     }

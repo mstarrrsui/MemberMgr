@@ -14,7 +14,7 @@ const MemberApi = {
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], this.memberData));
+        resolve(Object.assign([], this.memberData.slice(0,50)));
       }, delay);
     });
   },
