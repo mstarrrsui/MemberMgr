@@ -15,6 +15,7 @@ class Members extends React.Component {
       super(props, context);
       this.state = {
         members: null,
+        scrollId: 0,
         isAddDialogOpen: false
       }
     }
@@ -28,6 +29,7 @@ class Members extends React.Component {
       this.setState( () => ({ isAddDialogOpen: true}) )  
     }
 
+    
     onCloseModal = () => {
       this.setState( () => ({ isAddDialogOpen: false}) )  
     }
@@ -54,8 +56,13 @@ class Members extends React.Component {
 
     }
 
+    onScroll = () => {
+      log.info("onScroll called!");
+      this.setState( () => ({ scrollId: 30}) )
+    }
 
     loadMembers() {
+
       MemberApi.getAllMembers()
                .then( (members) => this.setState( () => ({ members: members }) ))
                .catch( error => { throw(error); })
@@ -63,18 +70,20 @@ class Members extends React.Component {
 
     render() {
 
-      const {members, isAddDialogOpen} = this.state;
+      const {members, isAddDialogOpen, scrollId} = this.state;
 
       return <div>
           <h1>Members</h1>
           <div className="row">
              <div className="col-md-12">
                   <button type="submit" onClick={this.onAddNew} className="btn btn-primary float-right">Add New</button>
+                  <button onClick={this.onScroll} className="btn btn-primary float-right">Scroll</button>
                 </div>
           </div>
+
           {!members  
             ? <Loading speed={90} text="DOWNLOADING" /> 
-            : <MemberList members={members} 
+            : <MemberList scrollTo={scrollId} members={members} setRefFunc={this.setMyRef}
           />}
 
           <Modal open={isAddDialogOpen} 
