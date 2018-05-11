@@ -6,10 +6,28 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 
 var config = {
+    mode: "development",
     entry: './app/index.js',
+    optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					chunks: "initial",
+					minChunks: 2
+				},
+				vendor: {
+					test: /node_modules/,
+					chunks: "initial",
+					name: "vendor",
+					priority: 10,
+					enforce: true
+				}
+			}
+		}
+	},
     output: {
         path: path.resolve(__dirname, "dist"), 
-        filename: "index_bundle.js",
+        filename: "[name].js",
         publicPath: '/'
     },
     module: {
