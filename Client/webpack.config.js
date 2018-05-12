@@ -1,12 +1,11 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 
 var config = {
-    mode: "development",
+    mode: process.env.NODE_ENV === 'production' ? "production" : "development",
     entry: './app/index.js',
     optimization: {
 		splitChunks: {
@@ -24,7 +23,10 @@ var config = {
 				}
 			}
 		}
-	},
+    },
+    performance: {
+        hints: false
+    },
     output: {
         path: path.resolve(__dirname, "dist"), 
         filename: "[name].js",
@@ -48,16 +50,16 @@ var config = {
     }   
 };
 
-if (process.env.NODE_ENV === 'production') {
-    config.plugins.push(
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin()
-    );
-}
+// if (process.env.NODE_ENV === 'production') {
+//     config.plugins.push(
+//         new webpack.DefinePlugin({
+//             'process.env': {
+//                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+//             }
+//         }),
+//         new webpack.optimize.UglifyJsPlugin()
+//     );
+// }
 
 if (process.env.NODE_ENV === 'visualize') {
     config.plugins.push(
