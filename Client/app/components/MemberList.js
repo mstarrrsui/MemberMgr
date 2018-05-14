@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import MemberListRow from './MemberListRow';
 
 class MemberList extends React.Component { 
-  constructor(props) {
-    super(props);
-  }
 
+  static propTypes = {
+    members: PropTypes.array.isRequired,
+    scrollTo: PropTypes.number.isRequired
+  }
 
   componentDidMount() {
     const node = this.scrolledRow;  
@@ -39,7 +40,11 @@ class MemberList extends React.Component {
         </thead>
         <tbody>
         {members.map(member =>
-          <MemberListRow scrollTo={scrollTo} setScrollRowRef={el => this.scrolledRow = el} key={member.id} member={member}/>
+          <MemberListRow 
+            scrollTo={scrollTo} 
+            scrollRowRef={el => this.scrolledRow = el} 
+            key={member.id} 
+            member={member} />
         )}
         </tbody>
       </table>
@@ -48,8 +53,6 @@ class MemberList extends React.Component {
       
 }
 
-MemberList.propTypes = {
-  members: PropTypes.array.isRequired
-};
+
 
 export default MemberList;

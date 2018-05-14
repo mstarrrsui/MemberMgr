@@ -83,7 +83,7 @@ class Members extends React.Component {
 
           {!members  
             ? <Loading speed={90} text="DOWNLOADING" /> 
-            : <MemberList scrollTo={scrollId} members={members} setRefFunc={this.setMyRef}
+            : <MemberList scrollTo={scrollId} members={members} 
           />}
 
           <Modal open={isAddDialogOpen} 
