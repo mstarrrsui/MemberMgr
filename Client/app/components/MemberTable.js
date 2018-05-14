@@ -10,7 +10,7 @@ import Modal from 'react-responsive-modal';
 import { US_STATES } from '../data/states'
 
 
-class Members extends React.Component {
+class MemberTable extends React.Component {
     constructor(props, context) {
       super(props, context);
       this.state = {
@@ -99,4 +99,4 @@ class Members extends React.Component {
     }
   }
   
-  export default Members;
+  export default MemberTable;

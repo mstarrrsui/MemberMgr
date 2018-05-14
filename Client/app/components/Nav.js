@@ -11,10 +11,15 @@ function Nav() {
                 </NavLink>
             </li>
             <li>
-                <NavLink activeClassName='active' to='/members'>
+                <NavLink activeClassName='active' to='/membertable'>
                     Table
                 </NavLink>
             </li>
+            <li>
+            <NavLink activeClassName='active' to='/membercards'>
+                Cards
+            </NavLink>
+        </li>
             <li>
                 <NavLink exact activeClassName='active' to='/grid'>
                     Kendo Grid

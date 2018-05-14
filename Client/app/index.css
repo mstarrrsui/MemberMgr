@@ -8,8 +8,9 @@ body {
   width: 1000px;
 }
 
+
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -18,7 +19,56 @@ body {
   justify-content: center;
 }
 
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
 
+.membercards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.membercard {
+  color: #0a1429;
+  min-height: 165px;
+  margin: 12px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  box-shadow: 3px 3px 17px #989ead;
+}
+
+
+.membercard .memberaddress{
+  color: #254892;
+}
+
+.membercard:hover {
+  background-color: #3497fa;
+  cursor: pointer;
+}
+
+.membercard button {
+  margin-top: 10px;
+  position: absolute;
+  bottom: 35px;
+  margin-bottom: 7px;
+  left: 35px;
+}
+
+
+
+.membercard .description {
+  margin-bottom: 20px;
+}
+
+.membercard .value {
+  font-weight: bold;
+}
 
 .column {
   display: flex;

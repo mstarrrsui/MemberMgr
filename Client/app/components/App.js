@@ -8,7 +8,8 @@ import {
 import Nav from './Nav';
 import Home from './Home';
 import DemoGrid from './DemoGrid';
-import Members from './Members';
+import MemberTable from './MemberTable';
+import MemberCardView from './MemberCardView';
 
 
 
@@ -27,7 +28,8 @@ class App extends React.Component {
                     <Nav />
                     <Switch>
                         <Route exact path='/' component={Home} />                      
-                        <Route path='/members' component={Members} />
+                        <Route path='/membertable' component={MemberTable} />
+                        <Route path='/membercards' component={MemberCardView} />
                         <Route exact path='/grid' component={DemoGrid} />
                         <Route render={function() { 
                            return <p>Not Found</p>    

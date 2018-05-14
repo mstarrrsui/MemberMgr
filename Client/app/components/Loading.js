@@ -4,7 +4,9 @@ var PropTypes = require('prop-types');
 var styles = {
     content: {
         textAlign: 'center',
-        fontSize: '35px'
+        fontSize: '30px',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 }
 
@@ -43,9 +45,9 @@ class Loading extends React.Component {
 
     render() {
         return (
-            <p style={styles.content}>
+            <div style={styles.content}>
                 {this.state.text}
-            </p>
+            </div>
         )
     }
 }
