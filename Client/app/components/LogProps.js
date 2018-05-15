@@ -10,12 +10,13 @@ import log from 'loglevel';
 
 
 const LogProps = (WrappedComponent) => {
-    //log.info('[Props]:'+ JSON.stringify(props))
-    return (props) => {
+    const Logger = props => {
       <div>
         <WrappedComponent {...props}/>
       </div>
     };
+
+    return Logger
   };
   
 

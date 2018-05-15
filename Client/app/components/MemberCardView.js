@@ -10,6 +10,7 @@ import Modal from 'react-responsive-modal';
 
 import { US_STATES } from '../data/states'
 
+const LoggedComponent = LogProps(MemberCardGrid);
 
 class MemberCardView extends React.Component {
     constructor(props, context) {
@@ -20,6 +21,7 @@ class MemberCardView extends React.Component {
         scrollId: 0,
         isAddDialogOpen: false
       }
+      
     }
   
     componentDidMount() {
@@ -78,7 +80,6 @@ class MemberCardView extends React.Component {
     render() {
 
       const {members, isAddDialogOpen, scrollId} = this.state;
-      const logger = LogProps(<MemberCardGrid members={members} />);
       return (
           <div>
 
@@ -98,7 +99,7 @@ class MemberCardView extends React.Component {
             </div>
             
             
-            {logger}
+            <LoggedComponent members={members}/>
             
 
             <Modal open={isAddDialogOpen} 
