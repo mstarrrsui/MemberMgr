@@ -15,6 +15,7 @@ class MemberCardView extends React.Component {
       super(props, context);
       this.state = {
         members: null,
+        searchText: '',
         scrollId: 0,
         isAddDialogOpen: false
       }
@@ -56,6 +57,11 @@ class MemberCardView extends React.Component {
 
     }
 
+    onChangeHandler = (e) => {
+        var value = e.target.value;
+        this.setState( () => ({ searchText: value}) )    
+    }
+
     onScroll = () => {
       log.info("onScroll called!");
       this.setState( () => ({ scrollId: 30}) )
@@ -85,7 +91,8 @@ class MemberCardView extends React.Component {
                 </div>
                 
                 <div className="col-md-6">
-                    <input className="form-control form-control-lg" type="text" placeholder="Search"/>
+                    <input className="form-control form-control-lg" type="text" 
+                            onChange={this.onChangeHandler} placeholder="Search"/>
                 </div>
             </div>
             
