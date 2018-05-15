@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import LogProps from './LogProps';
 import MemberCardGrid from './MemberCardGrid';
 import MemberForm from './MemberForm';
 import MemberApi from '../api/mockMemberApi'
@@ -77,7 +78,7 @@ class MemberCardView extends React.Component {
     render() {
 
       const {members, isAddDialogOpen, scrollId} = this.state;
-
+      const logger = LogProps(<MemberCardGrid members={members} />);
       return (
           <div>
 
@@ -96,7 +97,9 @@ class MemberCardView extends React.Component {
                 </div>
             </div>
             
-            <MemberCardGrid members={members} />
+            
+            {logger}
+            
 
             <Modal open={isAddDialogOpen} 
                     onClose={this.onCloseModal} 
