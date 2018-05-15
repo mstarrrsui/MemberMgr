@@ -75,12 +75,18 @@ class MemberCardView extends React.Component {
       return (
           <div>
 
-            <h1>Member Cards</h1>
             
             <div className="row">
-                <div className="col-md-12">
-                    <button type="submit" onClick={this.onAddNew} className="btn btn-primary float-right">Add New</button>
+                <div className="col-md-6 d-flex">
+                    <div className="p-1"><h2>Member Cards</h2></div>
+                    <div className="p-1">
+                        <button type="submit" onClick={this.onAddNew} className="btn btn-primary">Add New</button>
                     </div>
+                </div>
+                
+                <div className="col-md-6">
+                    <input className="form-control form-control-lg" type="text" placeholder="Search"/>
+                </div>
             </div>
             
             <MemberCardGrid members={members} />
