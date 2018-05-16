@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import LogProps from './LogProps';
+import LogPropsHOC from './LogPropsHOC';
 import MemberCardGrid from './MemberCardGrid';
 import MemberForm from './MemberForm';
 import MemberApi from '../api/mockMemberApi'
@@ -81,9 +82,7 @@ class MemberCardView extends React.Component {
 
       const {members, isAddDialogOpen, scrollId} = this.state;
       return (
-          <div>
-
-            
+          <div>           
             <div className="row">
                 <div className="col-md-6 d-flex">
                     <div className="p-1"><h2>Member Cards</h2></div>
@@ -98,8 +97,7 @@ class MemberCardView extends React.Component {
                 </div>
             </div>
             
-            
-            <LoggedComponent members={members}/>
+            <MemberCardGrid members={members}/>
             
 
             <Modal open={isAddDialogOpen} 
