@@ -11,6 +11,7 @@ import Home from './Home';
 import DemoGrid from './DemoGrid';
 import MemberTable from './MemberTable';
 import MemberCardView from './MemberCardView';
+import TabDemo from './tabs/TabDemo';
 
 
 
@@ -31,6 +32,7 @@ class App extends React.Component {
                         <Route exact path='/' component={Home} />                      
                         <Route path='/membertable' component={MemberTable} />
                         <Route path='/membercards' component={MemberCardView} />
+                        <Route path='/tabpanel' component={TabDemo} />
                         <Route exact path='/grid' component={DemoGrid} />
                         <Route render={function() { 
                            return <p>Not Found</p>    
