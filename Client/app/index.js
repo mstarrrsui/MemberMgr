@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import 'babel-polyfill';
 var App = require('./components/App');
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import '@devexpress/dx-react-grid-bootstrap4/dist/dx-react-grid-bootstrap4.css';

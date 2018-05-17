@@ -1,4 +1,5 @@
 var React = require('react');
+
 import log from 'loglevel';
 import {
     BrowserRouter as Router,
