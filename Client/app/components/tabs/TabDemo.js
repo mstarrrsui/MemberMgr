@@ -6,15 +6,9 @@ import Tabs from './Tabs'
 
 export default class TabDemo extends React.Component {
     
-    state = {
-      members: null
-    }
-    
-    
-  
+ 
     componentDidMount() {
     }
-
 
     render() {
 
@@ -28,10 +22,10 @@ export default class TabDemo extends React.Component {
                 <div><h3>Tab 1</h3></div>
               </TabPanel>
               <TabPanel id="2" title="Tab 2">
-                <div><h3>Tab 1</h3></div>
+                <div><h3>Tab 2</h3></div>
               </TabPanel>
               <TabPanel id="3" title="Tab 3">
-                <div><h3>Tab 1</h3></div>
+                <div><h3>Tab 3</h3></div>
               </TabPanel>
             </Tabs>
          </div>

@@ -5,7 +5,7 @@ import log from 'loglevel';
 export default class Tabs extends React.Component {
     
     state = {
-      activeTab: 1
+      activeTab: 0
     }
     
     
@@ -14,11 +14,28 @@ export default class Tabs extends React.Component {
     }
 
     _renderTabStrip = () => {
-        <div></div>
+        const {children} = this.props;
+        const liststyle = {
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap"
+        }
+
+        return (
+            <div>
+                <ul style={liststyle}>
+                    {children.map( t => 
+                        <li key={t.props.id}>{t.props.title}</li>
+                    )}
+                </ul>
+            </div>
+        );
     }
 
     _renderTabPanel = () => {
-        <div></div>
+        const {children} = this.props;
+        const {activeTab} = this.state;
+        return children[activeTab].props.children;
     }
 
 
