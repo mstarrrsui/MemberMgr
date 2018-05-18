@@ -6,7 +6,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import Nav from './Nav';
+import NavBar from './NavBar';
 import Home from './Home';
 import DemoGrid from './DemoGrid';
 import MemberTable from './MemberTable';
@@ -27,7 +27,7 @@ class App extends React.Component {
         return (
             <Router>
                 <div className='container'>
-                    <Nav />
+                    <NavBar />
                     <Switch>
                         <Route exact path='/' component={Home} />                      
                         <Route path='/membertable' component={MemberTable} />
