@@ -13,7 +13,12 @@ export default class Tabs extends React.Component {
     componentDidMount = () => {
     }
 
-    _renderTabStrip = () => {
+    handleTabClick = (index,event) => {       
+        event.preventDefault();
+        this.setState((state) => ({ activeTab: index}));
+    }
+
+    renderTabStrip = () => {
         const {children} = this.props;
         const {activeTab} = this.state;
         const liststyle = {
@@ -26,11 +31,19 @@ export default class Tabs extends React.Component {
         return (
             <div>
                 {children.map( t => {
-                    const isActive = activeTab === parseInt(t.props.id)
+                    const tabIdx = parseInt(t.props.id);
+                    const isActive = activeTab === tabIdx;
                     const btnClass = `btn btn-primary btn-lg ${isActive ? 'active' : ''}`
 
                     return (
-                        <a href="#" key={this.props.id} className={btnClass} role="button" aria-pressed="true">{t.props.title}</a>
+                        <a href="#" 
+                        key={tabIdx} 
+                        className={btnClass} 
+                        role="button" 
+                        aria-pressed="true"
+                        onClick={(e) => this.handleTabClick(tabIdx,e)}>
+                            {t.props.title}
+                        </a>
                     )
                 }
                 )}
@@ -39,10 +52,10 @@ export default class Tabs extends React.Component {
         );
     }
 
-    _renderTabPanel = () => {
+    renderTabPanel = () => {
         const {children} = this.props;
         const {activeTab} = this.state;
-        return children[activeTab-1].props.children;
+        return children[activeTab-1];
     }
 
 
@@ -50,8 +63,8 @@ export default class Tabs extends React.Component {
 
       return (
           <div>
-            { this._renderTabStrip() }  
-            { this._renderTabPanel() }
+            { this.renderTabStrip() }  
+            { this.renderTabPanel() }
           </div>
         );
     }

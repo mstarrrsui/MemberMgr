@@ -18,7 +18,7 @@ export default class TabDemo extends React.Component {
             <h2>Tab Panel Demo</h2>
          
             <Tabs>
-              <TabPanel id="1" title="Tab 1">
+              <TabPanel id="1" title="My Tab 1">
                 <div><h3>Tab 1</h3></div>
               </TabPanel>
               <TabPanel id="2" title="Tab 2">

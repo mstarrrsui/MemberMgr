@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const TabPanel = ({id,title}) =>  {
-    
-  return (
-    <div>
-        <h4>This is tab {id}</h4>
-    </div>
-  );
+const TabPanel = ({id,title,children}) =>  {    
+  return <div className='tabpanel'>{children}</div>;
 }
 
 
