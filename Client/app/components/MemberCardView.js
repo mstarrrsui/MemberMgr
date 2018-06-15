@@ -13,22 +13,35 @@ import { US_STATES } from '../data/states'
 
 const LoggedComponent = LogProps(MemberCardGrid);
 
-class MemberCardView extends React.Component {
-    constructor(props, context) {
-      super(props, context);
-      this.state = {
-        members: null,
-        searchText: '',
-        scrollId: 0,
-        isAddDialogOpen: false
-      }
-      
-    }
+export default class MemberCardView extends React.Component {
+   
+  constructor() {
+    super();
+    this._isMounted=false;
+  }
+
+  state = {
+    members: null,
+    searchText: '',
+    scrollId: 0,
+    isAddDialogOpen: false,
+  }
   
     componentDidMount() {
-      log.info(US_STATES[6]);
+      this._isMounted = true;
       this.loadMembers();
     }
+    
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
+
+    handleLoadSuccess = (result) => {
+      if (this._isMounted)
+        this.setState( () => ({ members: result }) )
+    }
+
+    
 
     onAddNew = () => {
       this.setState( () => ({ isAddDialogOpen: true}) )  
@@ -74,9 +87,11 @@ class MemberCardView extends React.Component {
     loadMembers() {
 
       MemberApi.getAllMembers()
-               .then( (members) => this.setState( () => ({ members: members }) ))
+               .then( result => this.handleLoadSuccess(result) )
                .catch( error => { throw(error); })
     }
+
+   
 
     render() {
 
@@ -114,4 +129,3 @@ class MemberCardView extends React.Component {
     }
   }
   
-  export default MemberCardView;

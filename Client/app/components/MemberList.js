@@ -10,8 +10,8 @@ class MemberList extends React.Component {
   }
 
   componentDidMount() {
-    const node = this.scrolledRow;  
-    node && node.scrollIntoView({block: "center", behavior: "instant"})  
+    // const node = this.scrolledRow;  
+    // node && node.scrollIntoView({block: "center", behavior: "instant"})  
   }
   
   componentDidUpdate(prevProps, prevState, snapshot) {
